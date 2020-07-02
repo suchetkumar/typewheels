@@ -16,7 +16,8 @@ export class App {
     this.completed = false;
 
     this.get();
-    
+
+    // compute stuff on keydowns
     this.eventListener = (e) => {
       setTimeout(() => {
         if (!this.completed) {   
@@ -28,14 +29,16 @@ export class App {
       }, 0);
     }
 
+    // compute analytics every 500 ms
     setInterval(() => {
       if (!this.completed) {
         this.refreshGrading();
         this.displayWPM();
-      }
-    }, 500);
+        }
+      }, 500);
   }
 
+  // get quote and reset
   get() {
     this.loaded = false;
     this.completed = false;
@@ -52,6 +55,7 @@ export class App {
   attached() {
     var input = document.getElementById('inp');
     input.addEventListener('keydown', this.eventListener);
+    console.log('attached');
   }
 
   reset() {
@@ -66,12 +70,13 @@ export class App {
     this.display = 0;
     this.render();
   }
+
+  // for debugging
   showThis() {
     console.log(this);
   }
 
   refreshGrading(e) {
-
     // check if we need to move to next word
     this.correct = "";
     var currentWord = this.words[this.current];
@@ -136,10 +141,10 @@ export class App {
   displayWPM() {
     this.display = this.wpm;
     var point = this.chart.series[0].points[0];
-    var newVal = this.display;
-    point.update(newVal);
+    point.update(this.display);
   }
 
+  // render the chart
   render() {
     this.chart = Highcharts.chart(this.mph, {
       chart: {
