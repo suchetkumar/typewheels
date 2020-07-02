@@ -1,0 +1,17 @@
+<template>
+  <require from="css/bootstrap.min.css"></require>
+  <require from="css/styles.css"></require>
+  <require from="images/car.png"></require>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light container">
+    <a class="navbar-brand">
+    </a>
+    <ul class="navbar-nav">
+      <li repeat.for="nav of router.navigation" class="${nav.isActive ? 'active' : ''} nav-item">
+        <a class="nav-link" href.bind="nav.href">${nav.title}</a>
+      </li>
+    </ul>
+  </nav>
+
+  <router-view></router-view>
+</template>

@@ -1,0 +1,33 @@
+{
+  "name": "typeracer",
+  "type": "project:application",
+  "paths": {
+    "root": "src",
+    "resources": "resources",
+    "elements": "resources/elements",
+    "attributes": "resources/attributes",
+    "valueConverters": "resources/value-converters",
+    "bindingBehaviors": "resources/binding-behaviors"
+  },
+  "transpiler": {
+    "id": "babel",
+    "fileExtension": ".js"
+  },
+  "build": {
+    "options": {
+      "server": "dev",
+      "extractCss": "prod",
+      "coverage": false
+    }
+  },
+  "platform": {
+    "hmr": false,
+    "open": false,
+    "port": 8082,
+    "output": "dist"
+  },
+  "packageManager": "npm",
+  "copyFiles": {
+    "images/*" : "images"
+  }
+}

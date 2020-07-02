@@ -1,0 +1,41 @@
+<template>
+    <require from="css/bootstrap.min.css"></require>
+        
+    <div class="container">    
+        <div class="progress">
+            <div style="width: ${progress}%" class="progress-bar progress-bar-striped bg-success" role="progressbar"></div>
+        </div>
+    
+        <div class="jumbotron">
+            <div class="row" style="height: 120px;">
+                <div class="col" style="height: 120px;">
+                    <pre if.bind="loaded"><mark if.bind="!!green" class="green">${green}</mark><mark if.bind="!!red" class="red">${red}</mark>${regular}</pre>
+                </div>
+                <div id = "chart" ref="mph" class="col-sm-4" style="position: relative; bottom: 100px"></div>
+            </div>
+            <img src="/images/car.png" width="100px" style="position: relative; left: ${progress*0.9}%; transition: left 0.5s; transition-timing-function: ease;">
+            <hr style="margin-top: 0px; margin-bottom: 0px; ">
+        </div>
+        
+        <input value.bind="typed" id="inp"></input>
+        <button click.delegate="get()" class="btn btn-success">New Quote</button>
+        <br>
+        <br>
+        <button click.trigger="showThis()" class="btn btn-info">Show This</button>
+        <div if.bind="completed">
+            done.
+        </div>
+
+        <h3>Top Scores</h3>
+        <table class="table-dark w-100">
+            <tr>
+                <td>hd</td>
+                <td>kjsdf</td>
+                <td> 5 wpm</td>
+            </tr>
+        </table>
+        
+    </div>
+    
+</template>
+    
