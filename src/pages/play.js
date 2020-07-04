@@ -49,6 +49,7 @@ export class App {
       this.words = this.quote.split(" ");
       this.loaded = true; 
       this.reset();
+      this.ready();
     });
   }
 
@@ -142,6 +143,15 @@ export class App {
     this.display = this.wpm;
     var point = this.chart.series[0].points[0];
     point.update(this.display);
+  }
+
+  ready() {
+    this.getready = true;
+    this.ready_txt = "Ready..."; 
+    setTimeout(function() {}, 1000);
+    this.ready_txt = "Set...";
+    setTimeout(function() {this.ready_txt = "Go!";}, 1000);
+    setTimeout(function() {this.getready = false}, 300);
   }
 
   // render the chart

@@ -5,7 +5,7 @@
         <div class="progress">
             <div style="width: ${progress}%" class="progress-bar progress-bar-striped bg-success" role="progressbar"></div>
         </div>
-    
+        
         <div class="jumbotron">
             <div class="row" style="height: 120px;">
                 <div class="col" style="height: 120px;">
@@ -13,7 +13,10 @@
                 </div>
                 <div id = "chart" ref="mph" class="col-sm-4" style="position: relative; bottom: 100px"></div>
             </div>
-            <img src="/images/car.png" width="100px" style="position: relative; left: ${progress*0.9}%; transition: left 0.5s; transition-timing-function: ease;">
+            <div class="row">
+                <img src="/images/car.png" width="100px" style="position: relative; left: ${progress*0.9}%; transition: left 0.5s; transition-timing-function: ease;">
+                <img src="/images/flag.png" width="50px" class="ml-auto mr-0" style="position: relative; left: 20px;" >
+            </div>
             <hr style="margin-top: 0px; margin-bottom: 0px; ">
         </div>
         
@@ -25,7 +28,7 @@
         <div if.bind="completed">
             done.
         </div>
-
+        <div if.bind="getready" textcontent.bind="ready_txt"></div>
         <h3>Top Scores</h3>
         <table class="table-dark w-100">
             <tr>
