@@ -2,9 +2,9 @@
     <require from="css/bootstrap.min.css"></require>
         
     <div class="container">    
-        <div class="progress">
+        <!--<div class="progress">
             <div style="width: ${progress}%" class="progress-bar progress-bar-striped bg-success" role="progressbar"></div>
-        </div>
+        </div>-->
         
         <div class="jumbotron">
             <div class="row" style="height: 120px;">
@@ -15,12 +15,12 @@
             </div>
             <div class="row">
                 <img src="/images/car.png" width="100px" style="position: relative; left: ${progress*0.9}%; transition: left 0.5s; transition-timing-function: ease;">
-                <img src="/images/flag.png" width="50px" class="ml-auto mr-0" style="position: relative; left: 20px;" >
+                <img src="/images/finish_line.png" width="50px" class="ml-auto mr-0" style="position: relative; left: 20px;" >
             </div>
             <hr style="margin-top: 0px; margin-bottom: 0px; ">
         </div>
         
-        <input value.bind="typed" id="inp"></input>
+        <input focus.bind="focus" value.bind="typed" id="inp"></input>
         <button click.delegate="get()" class="btn btn-success">New Quote</button>
         <br>
         <br>
@@ -28,16 +28,10 @@
         <div if.bind="completed">
             done.
         </div>
-        <div if.bind="getready" textcontent.bind="ready_txt"></div>
-        <h3>Top Scores</h3>
-        <table class="table-dark w-100">
-            <tr>
-                <td>hd</td>
-                <td>kjsdf</td>
-                <td> 5 wpm</td>
-            </tr>
-        </table>
-        
+        <div class="ready" if.bind="getready"   >
+            <div textcontent.bind="ready_txt" style.bind="ready_style"></div>   
+        </div>
+        <button click.trigger="ready()" class="btn btn-info">get ready</button>     
     </div>
     
 </template>

@@ -14,6 +14,7 @@ export class App {
     this.exactly = false;
     this.loaded = false;
     this.completed = false;
+    this.focus = false;
 
     this.get();
 
@@ -56,7 +57,6 @@ export class App {
   attached() {
     var input = document.getElementById('inp');
     input.addEventListener('keydown', this.eventListener);
-    console.log('attached');
   }
 
   reset() {
@@ -148,10 +148,20 @@ export class App {
   ready() {
     this.getready = true;
     this.ready_txt = "Ready..."; 
-    setTimeout(function() {}, 1000);
-    this.ready_txt = "Set...";
-    setTimeout(function() {this.ready_txt = "Go!";}, 1000);
-    setTimeout(function() {this.getready = false}, 300);
+    this.ready_style = {color: 'red'};
+    setTimeout(() => {
+      this.ready_txt = "Set...";
+      this.ready_style = {color: 'yellow'};
+      setTimeout(() => {
+        this.ready_txt = "Go!";
+        this.ready_style = {color: 'green'};
+        setTimeout(() => {
+          this.getready = false;
+        }, 300);
+      }, 1000);
+    }, 1000);
+    // focus on the input box
+    this.focus = true;
   }
 
   // render the chart
@@ -168,8 +178,8 @@ export class App {
       pane: {
           center: ['50%', '85%'],
           size: '100%',
-          startAngle: -90,
-          endAngle: 90,
+          startAngle: -100,
+          endAngle: 100,
           background: {
               backgroundColor:
                   Highcharts.defaultOptions.legend.backgroundColor || '#EEE',
