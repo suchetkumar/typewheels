@@ -1,5 +1,6 @@
 import {HttpClient} from 'aurelia-fetch-client';
 import 'bootstrap';
+import $ from 'bootstrap';
 import {Analytics} from '../resources/analytics';
 import Highcharts from 'highcharts'
 require ('highcharts/highcharts-more')(Highcharts);
@@ -55,8 +56,8 @@ export class App {
   }
 
   attached() {
-    var input = document.getElementById('inp');
-    input.addEventListener('keydown', this.eventListener);
+    this.input = document.getElementById('inp');
+    this.input.addEventListener('keydown', this.eventListener);
   }
 
   reset() {
@@ -146,7 +147,9 @@ export class App {
   }
 
   ready() {
+    this.focus = false;
     this.getready = true;
+
     this.ready_txt = "Ready..."; 
     this.ready_style = {color: 'red'};
     setTimeout(() => {
@@ -157,11 +160,10 @@ export class App {
         this.ready_style = {color: 'green'};
         setTimeout(() => {
           this.getready = false;
+          this.focus = true;
         }, 300);
       }, 1000);
-    }, 1000);
-    // focus on the input box
-    this.focus = true;
+    }, 1000);    
   }
 
   // render the chart

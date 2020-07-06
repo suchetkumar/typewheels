@@ -20,18 +20,21 @@
             <hr style="margin-top: 0px; margin-bottom: 0px; ">
         </div>
         
-        <input focus.bind="focus" value.bind="typed" id="inp"></input>
+        <input focus.bind="focus" value.bind="typed" id="inp" autocomplete="off"></input>
         <button click.delegate="get()" class="btn btn-success">New Quote</button>
         <br>
         <br>
+        <div class="ready" if.bind="getready"   >
+            <div textcontent.bind="ready_txt" style.bind="ready_style"></div>   
+        </div>
+        <!--
         <button click.trigger="showThis()" class="btn btn-info">Show This</button>
         <div if.bind="completed">
             done.
         </div>
-        <div class="ready" if.bind="getready"   >
-            <div textcontent.bind="ready_txt" style.bind="ready_style"></div>   
-        </div>
-        <button click.trigger="ready()" class="btn btn-info">get ready</button>     
+        
+        <button click.trigger="ready()" class="btn btn-info">get ready</button> 
+        -->    
     </div>
     
 </template>
